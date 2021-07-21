@@ -12,8 +12,8 @@ do
     php artisan make:migration create_${assoc[i]};
 done
 
-# factory=("Etudiant")
-# for i in ${!factory[@]};
-# do
-#     php artisan make:factory ${factory[i]}Factory --model=${factory[i]}
-# done
+factory=("Etudiant" "Evaluation")
+for i in ${!factory[@]};
+do
+    php artisan make:factory ${factory[i]}Factory --model=${factory[i]}
+done

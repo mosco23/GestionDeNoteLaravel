@@ -15,7 +15,6 @@ class CreateEcuesTable extends Migration
     {
         Schema::create('ecues', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('code');
             $table->mediumText('libelle');
             $table->mediumInteger('nbreCredit');
             $table->timestamps();
