@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Etudiant extends Model
 {
     use HasFactory;
+
+    public function ues()
+    {
+        return $this->belongsToMany(Ue::class);
+    }
+
+    public function evaluations()
+    {
+        return $this->belongsToMany(Evaluation::class);
+    }
+
+    
 }
