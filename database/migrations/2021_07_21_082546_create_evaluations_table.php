@@ -15,6 +15,7 @@ class CreateEvaluationsTable extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('ecue_id')->nullable()->contrained();
             $table->mediumText('code');
             $table->mediumText('libelle');
             $table->timestamps();

@@ -9,6 +9,8 @@ class Etudiant extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nce', 'nom', 'prenom'];
+
     public function ues()
     {
         return $this->belongsToMany(Ue::class);
