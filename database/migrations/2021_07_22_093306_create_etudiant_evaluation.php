@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEvaluationsTable extends Migration
+class CreateEtudiantEvaluation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateEvaluationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('evaluations', function (Blueprint $table) {
+        Schema::create('etudiant_evaluation', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ecue_id')->nullable()->contrained();
-            $table->mediumText('code');
-            $table->mediumText('libelle');
+            $table->foreignId('etudiant_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('evaluation_id')->nullable()->constrained()->onDelete('cascade');
+            $table->decimal('note', 4, 2);
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateEvaluationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evaluations');
+        Schema::dropIfExists('etudiant_evaluation');
     }
 }

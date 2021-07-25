@@ -15,10 +15,10 @@ class CreateParcoursTable extends Migration
     {
         Schema::create('parcours', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mention_id')->nullable()->contrained();
-            $table->foreignId('semestre_id')->nullable()->contrained();
-            $table->foreignId('niveau_id')->nullable()->contrained();
-            $table->foreignId('specialite_id')->nullable()->contrained();
+            $table->foreignId('mention_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('semestre_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('niveau_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('specialite_id')->nullable()->constrained()->onDelete('cascade');
             $table->mediumText('code');
             $table->mediumText('libelle');
             $table->timestamps();

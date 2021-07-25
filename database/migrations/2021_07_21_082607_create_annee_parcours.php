@@ -15,8 +15,8 @@ class CreateAnneeParcours extends Migration
     {
         Schema::create('annee_parcours', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('annee_id')->nullable()->contrained();
-            $table->foreignId('parcours_id')->nullable()->contrained();
+            $table->foreignId('annee_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('parcours_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

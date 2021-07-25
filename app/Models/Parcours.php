@@ -14,6 +14,11 @@ class Parcours extends Model
         return $this->belongsToMany(Annee::class);
     }
 
+    public function ues()
+    {
+        return $this->belongsToMany(Ue::class);
+    }
+
     public function mentions()
     {
         return $this->hasMany(Mention::class);

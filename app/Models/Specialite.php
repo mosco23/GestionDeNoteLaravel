@@ -13,4 +13,5 @@ class Specialite extends Model
     {
         return $this->belongsTo(Parcours::class);
     }
+    
 }

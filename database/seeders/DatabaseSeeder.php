@@ -4,14 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\{
+    Ecue,
     Etudiant,
     Evaluation,
     Mention,
-    Specialite,
-    Semestre,
     Niveau,
+    Parcours,
+    Semestre,
+    Specialite,
     Ue,
-    Ecue
 };
 
 class DatabaseSeeder extends Seeder
@@ -35,7 +36,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // Etudiant::factory()->count(3500)->create();
+        Etudiant::factory()->count(100)->create();
         $data = json_decode(file_get_contents(asset("storage/data.json")), true);
 
         foreach ($data as $key => $value) {
@@ -48,6 +49,7 @@ class DatabaseSeeder extends Seeder
                 'libelle' => $libelle,
             ]);
         }
+
         foreach ($specialites as $code => $libelle) {
             Specialite::create([
                 'code' => $code,
@@ -94,6 +96,31 @@ class DatabaseSeeder extends Seeder
                         'nbreCredit' => $ecue['nbreCredit']
                     ]);
             endforeach;
+
+            foreach ($ue['parcours'] as $pk => $parcours_id) {
+                Ue::find($ue_id)->parcours()->attach($parcours_id);
+
+                // DB::table('parcours_ue')->insert([
+                //     'ue_id' => $ue_id,
+                //     'parcours_id' => intVal($parcours_id),
+                // ]);
+            }
         endforeach;
+
+        $etudiants = Etudiant::all();
+        // $to_add = $etudiant->count() / 5;
+
+        for($i = 1; $i < 50; $i++){
+            for($j = 1; $j <= 7; $j++){
+                $etudiants->find($i)->ues()->attach($j);
+            }
+        }
+
+        for($i = 50; $i <= 100; $i++){
+            for($j = 8; $j <= 11; $j++){
+                $etudiants->find($i)->ues()->attach($j);
+            }
+        }
+        
     }
 }

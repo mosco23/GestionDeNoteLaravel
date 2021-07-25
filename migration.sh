@@ -1,6 +1,6 @@
 #!/bin/bash
 
-table=("Etudiant" "Evaluation" "Ue" "Ecue" "Annee" "Specialite" "Mention" "Niveau"  "Semestre" "Parcours")
+table=("Etudiant" "Ue" "Ecue" "Evaluation" "Annee" "Specialite" "Mention" "Niveau"  "Semestre" "Parcours")
 for i in ${!table[@]};
 do 
     php artisan make:model ${table[i]} -m; 

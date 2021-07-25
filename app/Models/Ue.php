@@ -18,4 +18,9 @@ class Ue extends Model
     {
         return $this->hasMany(Ecue::class);
     }
+
+    public function parcours()
+    {
+        return $this->belongsToMany(Parcours::class);
+    }
 }

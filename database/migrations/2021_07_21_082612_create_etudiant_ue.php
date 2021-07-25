@@ -15,8 +15,8 @@ class CreateEtudiantUe extends Migration
     {
         Schema::create('etudiant_ue', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('etudiant_id')->nullable()->contrained();
-            $table->foreignId('ue_id')->nullable()->contrained();
+            $table->foreignId('etudiant_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('ue_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

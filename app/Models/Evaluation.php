@@ -9,6 +9,8 @@ class Evaluation extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['ecue_id', 'code', 'libelle'];
+
     public function etudiants()
     {
         return $this->belongsToMany(Etudiant::class);

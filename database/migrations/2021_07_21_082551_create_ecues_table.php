@@ -15,9 +15,10 @@ class CreateEcuesTable extends Migration
     {
         Schema::create('ecues', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ue_id')->constrained();
+            $table->foreignId('ue_id')->constrained()->onDelete('cascade');
             $table->mediumText('libelle');
             $table->mediumInteger('nbreCredit');
+            $table->mediumInteger('nbreEvaluation')->nullable();
             $table->timestamps();
         });
     }
