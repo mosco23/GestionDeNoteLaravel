@@ -23,9 +23,22 @@ class NoteManagerComponent extends Component
      * @var integer : stocke l'id du parcours choisi
      */
     public $parcoursSelected;
-
+    
+    /**
+     * ecueSelected
+     *
+     * @var integer : stocke l'id de l'ecue choisi
+     */
     public $ecueSelected;
-    public $tabNotes;
+
+    public $inputClass;
+        
+    /**
+     * notes
+     *
+     * @var array 
+     */
+    public $notes;
     
     /**
      * ecueToAdd
@@ -56,17 +69,36 @@ class NoteManagerComponent extends Component
     public $ecues;
     
     /**
+     * ecue
+     *
+     * @var mixed
+     */
+    public $ecue;
+    
+    /**
      * etudiants
      *
      * @var array : stocke la liste de tous les etudiants
      */
     public $etudiants;
 
+    public $evaluations;
 
-    public $tab;
 
-    public function mount()
+    public $displayUes;
+    public $displayStudents;
+
+    public $newEval;
+    public $removeEval;
+
+    public function mount() { $this->resetMode(); }
+
+    public function render()
     {
+        return view('livewire.note-manager-component');
+    }
+
+    public function resetMode() {
         $this->parcoursSelected = null;
         $this->tabNotes = null;
 
@@ -74,14 +106,37 @@ class NoteManagerComponent extends Component
         $this->ues = null;
         $this->ecues = null;
         $this->etudiants = null;
+
+        $this->displayUes = null;
+        $this->displayStudents = null;
+
+        $this->newEval = null;
+        $this->removeEval = null;
     }
 
-    public function updatedParcoursSelected($value)
+    public function updatedParcoursSelected($parcours_id)
     {
-        $this->parcoursSelected = $value;
-        $this->etudiants = null;
-        $this->ues = Parcours::find($value)->ues()->with('ecues')->get()->toArray();
-        // $this->ues = Parcours::find($value)->ues()->with('ecues')->get()->toArray();
+        // clear listing students if exist
+        if($this->displayStudents) { $this->displayStudents = false; }
+        
+        $this->parcoursSelected = intVal($parcours_id);
+        $this->ues = Parcours::find($this->parcoursSelected)
+            ->ues()
+            ->with("ecues")
+            ->get()
+            ->toArray();
+
+        $this->displayUes = true;
+    }
+
+    public function listingStudents( $ue_id, $ecue_id )
+    {
+        $this->etudiants = Ue::find($ue_id)
+            ->etudiants()
+            ->get();
+        $this->ecue = Ecue::find($ecue_id);
+        $this->evaluations = $this->ecue->evaluations()->get();
+        $this->displayStudents = true;
     }
 
     public function updatedEcueSelected( $ecue_id )
@@ -89,41 +144,40 @@ class NoteManagerComponent extends Component
         $this->ecueSelected = intVal($ecue_id);
     }
 
-    public function updatedEcueToAdd($value)
-    {
-        $this->ecueToAdd = $value;
-    }
+    public function updatedNewEval($value) { $this->newEval = $value; }
 
-    public function addEvaluation(){
+    public function updatedRemoveEval($value) { $this->removeEval = $value; }
+
+    public function addEvaluation()
+    {
         Evaluation::create([
-            'ecue_id' => $this->ecueSelected,
-            'libelle' => $this->ecueToAdd,
-            'code' => "BLABLA"
+            'ecue_id' => $this->ecue->id,
+            'libelle' => $this->newEval
         ]);
+        $this->getEvaluations();
+        $this->newEval = null;
     }
 
-    public function seeStudentsList( $ue_id )
+    public function removeEvaluation() 
     {
-        $this->etudiants = Ue::find($ue_id)->etudiants()->get()->toArray();
-        $this->ecues = Ue::find($ue_id)->ecues()->with('evaluations')->get()->toArray();
-        // dd($this->ecues[0]['evaluations'])
+        Evaluation::find($this->removeEval)->delete();
+        $this->getEvaluations();
+        $this->removeEval = null; 
     }
 
-    public function updating($name, $note)
+    public function updatedNotes($note, $etudiant_eval)
     {
-        $data = explode(".", $name);
-        if($data[0] == "tab"):
-            $etudiant_id = $data[1];
-            $evaluation_id = $data[2];
-            Etudiant::find($etudiant_id)->evaluations()->attach(
-                                                        $evaluation_id,
-                                                        ['note' => $note]
-                                                    );
-        endif;
+        $etudiant_eval = explode(".", $etudiant_eval);
+        $etudiant_id = intVal($etudiant_eval[0]);
+        $evaluation_id = intVal($etudiant_eval[1]);
+
+        Etudiant::find($etudiant_id)
+            ->evaluations()
+            ->attach($evaluation_id, ['note' => $note]);
     }
 
-    public function render()
+    public function getEvaluations()
     {
-        return view('livewire.note-manager-component');
+        return $this->evaluations = $this->ecue->evaluations()->get();
     }
 }

@@ -18,7 +18,7 @@ class Etudiant extends Model
 
     public function evaluations()
     {
-        return $this->belongsToMany(Evaluation::class);
+        return $this->belongsToMany(Evaluation::class)->withPivot('note');
     }
 
     

@@ -9,11 +9,11 @@ class Evaluation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ecue_id', 'code', 'libelle'];
+    protected $fillable = ['ecue_id', 'libelle'];
 
     public function etudiants()
     {
-        return $this->belongsToMany(Etudiant::class);
+        return $this->belongsToMany(Etudiant::class)->withPivot('note');
     }
 
     public function ecue()
