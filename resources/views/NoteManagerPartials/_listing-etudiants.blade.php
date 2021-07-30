@@ -77,7 +77,7 @@
         }  */
 </style>
 
-<table>
+<table class="container">
     <thead>
         <tr>
             <th rowspan="" colspan="">ID</th>
@@ -89,6 +89,10 @@
             @empty
                 <th>Aucune evaluation pour l'heure</th>
             @endforelse
+
+            @if (!empty($evaluations))
+                <th  rowspan="" colspan="" class="text-danger">Moyennes</th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -100,7 +104,7 @@
             <td>{{ $etudiant->prenom }}</td>
             @forelse ($evaluations as $eval)
             <td>
-                <input
+                <input class="w-100"
                     type="number" 
                     wire:model.lazy="notes.{{ $etudiant->id }}.{{ $eval->id }}"
                     @if($etudiant->evaluations->find($eval->id) != null)
@@ -109,8 +113,11 @@
                 >
             </td>
             @empty
-                {{-- nothing --}}
+            <td></td>
             @endforelse
+            <td wire:model="moyenne">
+                <label class="btn btn-success w-100"  for="moyenne">{{ var_dump($moyenne) }}</label>
+            </td>
     
         </tr>
         @empty

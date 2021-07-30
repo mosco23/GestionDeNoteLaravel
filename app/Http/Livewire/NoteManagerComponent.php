@@ -3,15 +3,12 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 use App\Models\{
     Ecue,
     Etudiant,
     Evaluation,
-    Mention,
-    Niveau,
     Parcours,
-    Semestre,
-    Specialite,
     Ue
 };
 
@@ -84,6 +81,7 @@ class NoteManagerComponent extends Component
 
     public $evaluations;
 
+    public $moyenne = 0;
 
     public $displayUes;
     public $displayStudents;
@@ -152,7 +150,7 @@ class NoteManagerComponent extends Component
     {
         Evaluation::create([
             'ecue_id' => $this->ecue->id,
-            'libelle' => $this->newEval
+            'libelle' => $this->newEval,
         ]);
         $this->getEvaluations();
         $this->newEval = null;
@@ -171,10 +169,19 @@ class NoteManagerComponent extends Component
         $etudiant_id = intVal($etudiant_eval[0]);
         $evaluation_id = intVal($etudiant_eval[1]);
 
+        $this->moyenne = intval(DB::table('etudiant_evaluation')
+            ->where('etudiant_id', $etudiant_id)
+            ->avg('note'));
+        
         Etudiant::find($etudiant_id)
             ->evaluations()
             ->attach($evaluation_id, ['note' => $note]);
+
+
+
     }
+
+
 
     public function getEvaluations()
     {

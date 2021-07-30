@@ -1,5 +1,5 @@
 <div class="col-12 border p-3 m-2">
-    <h2>GESTION DES EVALUATIONS</h2>
+    <h2 class="container">GESTION DES EVALUATIONS</h2>
     <select wire:model="ecueSelected">
         <option value="">-*-SELECTIONNER UN ECUE-*-</option>
         @foreach ($ecues as $ecue)
@@ -50,9 +50,10 @@
         box-sizing: border-box;
         }  */
 </style>
-<table>
+<table class="table shadow-lg p-3 mb-5 bg-white rounded">
     <thead>
         <tr>
+            <th>Moyenne</th>
             <th rowspan="" colspan="">#</th>
             <th rowspan="" colspan="">NCE</th>
             <th rowspan="" colspan="">Nom</th>
@@ -62,6 +63,7 @@
                 {{ $ecue['libelle'] }}
             </th>
             @endforeach
+            <th>Moyenne</th>
         </tr>
     </thead>
     <tbody>
@@ -77,6 +79,9 @@
             @empty
                 
             @endforelse
+            <td>
+                <label>{{ $moyenne }}</label>
+            </td>
         </tr>
         @foreach ($etudiants as $id => $etudiant)
         <tr>
@@ -91,13 +96,11 @@
                         <input wire:model.lazy="tab.{{ $etudiant['id'] }}.{{ $evaluation['id'] }}" class="note" type="number">
                     </td>
                     @empty
-
+                    
                     @endforelse
-                {{-- </tr> --}}
+                    {{-- </tr> --}}
             @endforeach
-           
-    
         </tr>
-    @endforeach  
+        @endforeach  
     </tbody>
 </table>

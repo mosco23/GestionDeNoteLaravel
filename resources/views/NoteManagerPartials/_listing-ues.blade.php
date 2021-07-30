@@ -1,11 +1,14 @@
-<ul>
+<ul class="container bg-dark text-white">
     @forelse ($ues as $k => $ue)
     <li>
-        {{ $ue["code"] }}
+        <div class="btn btn-primary">
+            {{ $ue["code"] }}
+        </div>
+        
         <ul>
             @foreach ($ue["ecues"] as $kk => $ecue)
             <li
-                wire:click="listingStudents({{ $ue['id'] }}, {{ $ecue['id'] }} )"
+            class="btn btn-secondary" wire:click="listingStudents({{ $ue['id'] }}, {{ $ecue['id'] }} )"
             >
                 {{ $ecue['libelle'] }}
             </li>
