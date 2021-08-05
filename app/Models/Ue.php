@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ue extends Model
 {
+    protected $fillable = ['code', 'libelle'];
     use HasFactory;
 
     public function etudiants()

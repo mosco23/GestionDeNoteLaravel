@@ -13,8 +13,14 @@
         @livewireStyles()
     </head>
     <body>
-        
-        @livewire('note-manager-component')
+        <header>
+            <nav>
+                @livewire('menu')
+            </nav>
+        </header>
+        <main>
+            @yield('main')
+        </main>
 
         @livewireScripts()
     </body>

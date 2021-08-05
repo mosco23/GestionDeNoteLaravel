@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Specialite extends Model
 {
+    protected $fillable = ['code', 'libelle'];
     use HasFactory;
 
     public function parcours()
     {
-        return $this->belongsTo(Parcours::class);
+        return $this->hasMany(Parcours::class);
     }
     
 }

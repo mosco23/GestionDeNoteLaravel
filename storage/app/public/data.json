@@ -31,39 +31,75 @@
     "parcours": {
         "0": {
             "code": "L1_MI_SEM1",
-            "libelle": "Licence 1 Math&eacute;matiques-Informatique Semestre 1"
+            "libelle": "Licence 1 Math&eacute;matiques-Informatique Semestre 1",
+            "niveau_id":1,
+            "mention_id": 2,
+            "specialite_id": 1,
+            "semestre_id": 1
         },
         "1": {
             "code": "L1_MI_SEM2",
-            "libelle": "Licence 1 Math&eacute;matiques-Informatique Semestre 2"
+            "libelle": "Licence 1 Math&eacute;matiques-Informatique Semestre 2",
+            "niveau_id":1,
+            "mention_id": 2,
+            "specialite_id": 1,
+            "semestre_id": 1
         },
         "2": {
             "code": "L2_MI_SEM3",
-            "libelle": "Licence 2 Math&eacute;matiques-Informatique Semestre 3"
+            "libelle": "Licence 2 Math&eacute;matiques-Informatique Semestre 3",
+            "niveau_id":1,
+            "mention_id": 1,
+            "specialite_id": 1,
+            "semestre_id": 1
         },
         "3": {
             "code": "L2_MATHS_SEM4",
-            "libelle": "Licence 2 Math&eacute;matiques Semestre 4"
+            "libelle": "Licence 2 Math&eacute;matiques Semestre 4",
+            "niveau_id":2,
+            "mention_id": 2,
+            "specialite_id": 1,
+            "semestre_id": 1
         },
         "4": {
             "code": "L2_INFO_SEM4",
-            "libelle": "Licence 2 Informatique Semestre 4"
+            "libelle": "Licence 2 Informatique Semestre 4",
+            "niveau_id":2,
+            "mention_id": 2,
+            "specialite_id": 1,
+            "semestre_id": 1
         },
         "5": {
             "code": "L3_INFO_SEM5",
-            "libelle": "Licence 3 Informatique Semestre 5"
+            "libelle": "Licence 3 Informatique Semestre 5",
+            "niveau_id":1,
+            "mention_id": 2,
+            "specialite_id": 2,
+            "semestre_id": 1
         },
         "6": {
             "code": "L3_MATHS_SEM5",
-            "libelle": "Licence 3 Math&eacute;matiques Semestre 5"
+            "libelle": "Licence 3 Math&eacute;matiques Semestre 5",
+            "niveau_id":1,
+            "mention_id": 2,
+            "specialite_id": 2,
+            "semestre_id": 1
         },
         "7": {
             "code": "L3_INFO_SEM6",
-            "libelle": "Licence 3 Informatique Semestre 6"
+            "libelle": "Licence 3 Informatique Semestre 6",
+            "niveau_id":1,
+            "mention_id": 2,
+            "specialite_id": 1,
+            "semestre_id": 2
         },
         "8": {
             "code": "L3_MATHS_SEM6",
-            "libelle": "Licence 3 Math&eacute;matiques Semestre 6"
+            "libelle": "Licence 3 Math&eacute;matiques Semestre 6",
+            "niveau_id":1,
+            "mention_id": 2,
+            "specialite_id": 1,
+            "semestre_id": 2
         }
     },
     "ues": {

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parcours extends Model
 {
+    protected $fillable = ['code', 'libelle', 'niveau_id', 'mention_id', 'semestre_id', 'specialite_id'];
+    
     use HasFactory;
 
     public function annees()
@@ -19,24 +21,24 @@ class Parcours extends Model
         return $this->belongsToMany(Ue::class);
     }
 
-    public function mentions()
+    public function mention()
     {
-        return $this->hasMany(Mention::class);
+        return $this->belongsTo(Mention::class);
     }
 
-    public function niveaux()
+    public function niveau()
     {
-        return $this->hasMany(Niveau::class);
+        return $this->belongsTo(Niveau::class);
     }
 
-    public function semestres()
+    public function semestre()
     {
-        return $this->hasMany(Semestre::class);
+        return $this->belongsTo(Semestre::class);
     }
 
-    public function specialites()
+    public function specialite()
     {
-        return $this->hasMany(Specialite::class);
+        return $this->belongsTo(Specialite::class);
     }
 
 }

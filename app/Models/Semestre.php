@@ -11,6 +11,6 @@ class Semestre extends Model
 
     public function parcours()
     {
-        return $this->belongsTo(Parcours::class);
+        return $this->hasMany(Parcours::class);
     }
 }

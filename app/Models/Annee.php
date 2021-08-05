@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Annee extends Model
 {
+    protected $fillable = ['libelle'];
     use HasFactory;
 
     public function parcours()

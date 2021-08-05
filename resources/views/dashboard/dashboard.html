@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="FR-fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width initial-scale=1">
+        <link rel="stylesheet" href="../../bootstrap-4.0.0/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../../bootstrap-4.0.0/dist/css/glyphicons.css">
+        <link rel="stylesheet" href="style.css" type="text/css" >
+        <title>mon cv</title>
+    </head>
+    <body>
+        <header class="container-fluid">
+            <div class="row">
+                <img sclass="col" src="img/logo4.JPG">
+                <img 
+                    class="col img img-circle" 
+                    src="img/enfant ecrit.jpg" 
+                    alt=""
+                >
+                <div class="col">
+                    <p><a href="#">Se connecter</a></p>
+                    <p><a href="#">S'inscrire</a></p>
+                </div>
+            </div>
+        </header>
+        
+
+<!-------------------------------------------------------------------------------------------------------->
+
+<!-------------------------------------------------------------------------------------------------------->
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!-------------------------------------------------------------------------------------------------------->
+            Darshboard Menu
+        <!-------------------------------------------------------------------------------------------------------->
+        <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'General:home' %}">Gerer programme</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'General:liste_matieres' %}">Gerer matieres</a>
+                    </li>
+                    <li class="nav-item my-2 my-lg-0">
+                      <a class="nav-link" href="{% url 'General:liste_etudiants' %}">Gerer Apprenants</a>
+                    </li>
+                    <li class="nav-item my-2 my-lg-0">
+                      <a class="nav-link" href="{% url 'General:liste_options' %}">Gerer professeurs</a>
+                    </li>
+                    <li class="nav-item my-2 my-lg-0">
+                      <a class="nav-link" href="{% url 'General:liste_niveaux' %}">Gerer devis</a>
+                    </li>
+                    <li class="nav-item my-2 my-lg-0">
+                        <a class="nav-link" href="{% url 'General:aide' %}">Gerer profil</a>
+                    </li>
+                  </ul>
+                </div>
+            </nav>
+        </div>
+
+
+        <!-------------------------------------------------------------------------------------------------------->
+
+        <!-------------------------------------------------------------------------------------------------------->
+
+        <div class="col">
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------->
+
+
+
+
+</body>
+
+<footer class="page-footer row text-center mt-5 mb-0 table-dark">
+    <div class="container mt-5">
+        <div class="row">
+            <h2 class="col-12">Suivez-nous</h2>
+            <p class="col-4">Facebook</p>
+            <p class="col-4">Instagram</p>
+            <p class="col-4">Twitter</p>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4">
+                <h3>Travaillez avec nous</h3>
+                <p><a href="#">Devenir prof</a></p>
+                <p><a href="#">Etre partenaire</a></p>
+            </div>
+            <div class="col-4">
+                <h3>Consulter aide</h3>
+                <p><a href="#">Centre d'aide</a></p>
+                <p><a href="#">Contactez-nous</a></p>
+            </div>
+            <div class="col-4">
+                <h3>A propos</h3>
+                <p><a href="#">Conditions generales</a></p>
+                <p><a href="#">Politiques de confidentialites</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-5">
+        <h3 class="col-12">Réaliser par <strong>{% include 'website_name.html' %}</strong></h3>
+        <p class="col-12">Copyright © 2020 Tous Droits Réservés</p>
+    </div>
+</footer>
+
+</html>

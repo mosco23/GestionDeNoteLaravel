@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Page Title - SB Admin</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="../../css/menu.css">
+        <script src="../../js/jquery1111.min.js" type="text/javascript"></script>
+        <script src="../../js/script.js"></script>
+    </head>
+    <body class="bg-primary">
+        <div id="cssmenu" >
+            <ul>
+                <li class="active"><a href="index.html"><span>zKidzone</span></a></li>
+                <li class="last"><a href="dashboard/dist/devis.html"><span>Faire un devis </span></a></li>
+                <li class="last"><a href="contact.html"><span>Devenir profsesseur</span></a></li>
+                <li><a href="about.html"><span>A propos</span></a></li>
+                <li class="last"><a href="contact.html"><span>Contactez-nous</span></a></li>
+                <li class="last"><a href="dashboard/index.html"><span>Dashboard</span></a></li>
+
+                <li class="has-sub ml-5"><a href="#"><span>Compte</span></a>
+                    <ul>
+                        <li>
+                        <a href="dashboard/dist/login.html"><span>Se connecter</span></a>
+                        </li>
+                        <li>
+                        <a href="dashboard/dist/register.html"><span>Creer un compte</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Devis</h3></div>
+                                    <div class="card-body">
+                                        <form method="POST" >
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="niveau">Niveau</label>
+                                                <select class="form-control" name="niveau" id="niveau">
+                                                    <option value="france">CM1</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="matiere">Choisissez vos matieres</label>
+                                                <select class="form-control" name="matiere" id="matiere" multiple>
+                                                    <option value="informatique">initiation a l'informatique</option>
+                                                    <option value="mathematiques">Mathematiques</option>
+                                                    <option value="mathematiques">Histoire</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="pays">Pays</label>
+                                                <select class="form-control" name="pays" id="pays">
+                                                    <option value="ci">Cote d'Ivoire</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="commune">Ville/Commune</label>
+                                                <select class="form-control" name="commune" id="commune">
+                                                    <option value="abobo">Abobo</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="quartier">Quartier</label>
+                                                <input list="quartiers" name="quartier" id="quartier" autocomplete="on">
+                                                <datalist id="quartier">
+                                                    <option value="soghefia">Soghefia</option>
+                                                </datalist>
+                                            </div>
+                                            
+                                            
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="code_promo">Code promo</label>
+                                                <input class="form-control py-4" id="total" type="text" placeholder="XXX-XXX-XXX-XXXX" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="total">Total</label>
+                                                <input class="form-control py-4" id="code_promo" type="number" disabled />
+                                            </div>
+                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                <button class="btn text-white btn-warning">sauvegarder</button>
+                                                <button class="btn btn-primary">Payer</button>
+                                            </div>
+                                            <!---
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="inputPassword">Password</label>
+                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
+                                            </div>
+
+                                            --->
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <div id="layoutAuthentication_footer">
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

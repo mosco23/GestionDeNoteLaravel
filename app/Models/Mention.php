@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mention extends Model
 {
+    protected $fillable = ['libelle', 'code'];
     use HasFactory;
 
     public function parcours()
     {
-        return $this->belongsTo(Parcours::class);
+        return $this->hasMany(Parcours::class);
     }
 }

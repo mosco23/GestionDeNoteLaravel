@@ -75,10 +75,14 @@ class DatabaseSeeder extends Seeder
         // $this->modelHelpers($niveaux, 'Niveau');
         // $this->modelHelpers($semestres, 'Semestre');
 
-        foreach ($parcours as $key => $value) {
+       foreach ($parcours as $key => $value) {
             Parcours::create([
                 'code' => $value['code'],
-                'libelle' => $value['libelle']
+                'libelle' => $value['libelle'],
+                "niveau_id" => $value['niveau_id'],
+                "mention_id" => $value['mention_id'],
+                "specialite_id" => $value['specialite_id'],
+                "semestre_id" => $value['semestre_id']
             ]);
         }
 
