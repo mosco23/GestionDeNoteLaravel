@@ -7,7 +7,6 @@
       <div class="navbar-nav">
         <a class="btn nav-item nav-link active" href="{{Route('mentions')}}">MENTIONS</a>
         <a class="btn nav-item nav-link active" href="{{Route('specialites')}}">SPECIALITES</a>
-        <a class="btn nav-item nav-link active" href="{{Route('parcours')}}">PARCOURS</a>
         <a class="btn nav-item nav-link active" href="{{Route('niveaux')}}">NIVEAUX</a>
       </div>
     </div>

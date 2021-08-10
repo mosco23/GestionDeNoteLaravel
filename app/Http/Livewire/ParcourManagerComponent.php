@@ -13,6 +13,7 @@ use App\Models\Annee;
 
 class ParcourManagerComponent extends Component
 {
+    public $annee_id;
     public $libelle;
     public $code;
     public $mentions;
@@ -51,7 +52,8 @@ class ParcourManagerComponent extends Component
 
     public function getParcours()
     {
-        return Parcours::all();
+        $parcours = Annee::find($this->annee_id)->parcours()->get();
+        return $parcours;
     }
 
     public function getSpecialites()
@@ -106,18 +108,20 @@ class ParcourManagerComponent extends Component
 
     public function addParcour()
     {
-        Parcours::updateOrCreate([
-            'id' => $this->parcourSelected,
-        ],
-        [
-            'code' => $this->code,
-            'libelle' => $this->libelle,
-            'niveau_id' => $this->niveauSelected,
-            'mention_id' => $this->mentionSelected,
-            'semestre_id' => $this->semestreSelected,
-            'specialite_id' => $this->specialiteSelected,
-        ]
-    );
+        $id = Parcours::updateOrCreate([
+                'id' => $this->parcourSelected,
+            ],
+            [
+                'code' => $this->code,
+                'libelle' => $this->libelle,
+                'niveau_id' => $this->niveauSelected,
+                'mention_id' => $this->mentionSelected,
+                'semestre_id' => $this->semestreSelected,
+                'specialite_id' => $this->specialiteSelected,
+            ]
+        )->id;
+
+    Annee::find($this->annee_id)->parcours()->attach($id);
 
         $this->initialisation();
     }

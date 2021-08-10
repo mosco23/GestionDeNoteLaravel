@@ -33,8 +33,8 @@ Route::get('/specialites', function(){
 })->name('specialites');
 
 
-Route::get('/parcours', function(){
-    return view('pages.parcours');
+Route::get('/parcours/{id}', function($id){
+    return view('pages.parcours', ['id' => $id]);
 })->name('parcours');
 
 

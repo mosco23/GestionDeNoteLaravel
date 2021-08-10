@@ -18,7 +18,7 @@
                                 <label for="mention">Mention</label>
                                 <select wire:model="mentionSelected" name="mention" id="mention">
                                     @foreach ($mentions as $mention)
-                                        <option value="{{$mention->id}}">{{$mention->libelle}}</option>
+                                        <option value="{{$mention->id}}">{!! $mention->libelle !!}</option>
                                     @endforeach
                                 </select>
                             </p>
@@ -34,7 +34,7 @@
                                 <label for="niveau">Niveau</label>
                                 <select wire:model="niveauSelected" name="niveau" id="niveau">
                                     @foreach ($niveaux as $niveau)
-                                        <option value="{{$niveau->id}}">{{$niveau->libelle}}</option>
+                                        <option value="{{$niveau->id}}">{!! $niveau->libelle !!}</option>
                                     @endforeach
                                 </select>
                             </p>
@@ -42,7 +42,7 @@
                                 <label for="specialite">Specialite</label>
                                 <select wire:model="specialiteSelected" name="specialite" id="specialite">
                                     @foreach ($specialites as $specialite)
-                                        <option value="{{$specialite->id}}">{{$specialite->libelle}}</option>
+                                        <option value="{{$specialite->id}}">{!! $specialite->libelle !!}</option>
                                     @endforeach
                                 </select>
                             </p>

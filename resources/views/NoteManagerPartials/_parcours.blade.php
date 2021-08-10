@@ -12,22 +12,22 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($parcours as $id => $parcour)
+        @forelse ($parcours as $parcour_id => $parcour)
         <tr>
-            <td>{{ $id + 1 }}</td>
+            <td>{{ $parcour_id + 1 }}</td>
             <td>{{ $parcour->code }}</td>
             <td>{{ $parcour->libelle }}</td>
             <td>
-                {{$parcour->mention->libelle}}
+                {!! $parcour->mention->libelle !!}
             </td>
             <td>
-                {{$parcour->specialite->libelle}}
+                {!! $parcour->specialite->libelle !!}
             </td>
             <td>
-                {{$parcour->niveau->libelle}}
+                {!! $parcour->niveau->libelle !!}
             </td>
             <td>
-                {{$parcour->semestre->libelle}}
+                {!! $parcour->semestre->libelle !!}
             </td>
             <td class="d-flex justify-content-between">
                 <span>
@@ -51,9 +51,13 @@
             </td>
         </tr>
         @empty
-            <h3>
-                Aucun parcours enregistre.
-            </h3>
+        <tr>
+            <td colspan="8">
+                <h3>
+                    Aucun parcours enregistre.
+                </h3>
+            </td>
+        </tr>
         @endforelse  
     </tbody>
 </table>

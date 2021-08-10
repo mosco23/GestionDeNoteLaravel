@@ -24,6 +24,11 @@ class AnneeManagerComponent extends Component
         $this->annees = $this->getAnnees();
     }
 
+    public function viewParcours()
+    {
+        return redirect("livewire.parcour-manager-component", ['annee_id' => $this->annee_id]);
+    }
+
     public function getAnnees()
     {
         return $this->annees = Annee::all()->sortByDesc(['libelle']);
