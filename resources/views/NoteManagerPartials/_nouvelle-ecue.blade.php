@@ -14,14 +14,6 @@
                                 <label for="nbreCredit">NOMBRE DE CREDIT</label>
                                 <input type="text" value="{{$nbreCredit}}" wire:model="nbreCredit">
                             </p>
-                            <p>
-                                <label for="l">UE</label>
-                                <select wire:model="ueSelected" name="ueSelected" id="ueSelected">
-                                    @foreach ($ues as $ue)
-                                        <option value="{{$ue->id}}">{{$ue->libelle}}</option>
-                                    @endforeach
-                                </select>
-                            </p>
                             <div class="form-group mt-4 mb-0">
                                 <button wire:click="addEcue" class="btn-primary w-100">Ajouter</button>
                             </div>

@@ -12,7 +12,7 @@ do
     php artisan make:migration create_${assoc[i]};
 done
 
- factory=("Etudiant" "Evaluation")
+ factory=("Etudiant" "Evaluation" "Specialite" "Mention" "Niveau")
  for i in ${!factory[@]};
  do
      php artisan make:factory ${factory[i]}Factory --model=${factory[i]}

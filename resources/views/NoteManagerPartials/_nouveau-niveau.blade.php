@@ -15,7 +15,7 @@
                                 <input type="text" wire:model="libelle">
                             </p>
                             <div class="form-group mt-4 mb-0">
-                                <button wire:click="addSpecialite" class="btn-primary w-100">Ajouter</button>
+                                <button wire:click="addNiveau" class="btn-primary w-100">Ajouter</button>
                             </div>
                         </div>
                     </div>

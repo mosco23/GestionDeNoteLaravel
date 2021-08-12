@@ -5,6 +5,8 @@
             <th>CODE</th>
             <th>LIBELLE</th>
             <th>NOMBRE D'ECUE(S)</th>
+            <th>NOMBRE D'ETUDIANTS</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -13,10 +15,17 @@
             <td>{{ $id + 1 }}</td>
             <td>{{ $ue->code }}</td>
             <td>{{ $ue->libelle }}</td>
-            <td class="d-flex justify-content-between">
-                <span>
+            <td>
+                <a href="{{Route('ecues', $ue->id)}}">
                     {{ $ue->ecues()->count() }}
-                </span>
+                </a>
+            </td>
+            <td>
+                <a href="{{Route('etudiants', $ue->id)}}">
+                    {{ $ue->etudiants()->count() }}
+                </a>
+            </td>
+            <td class="d-flex justify-content-between">
                 <span class="d-flex align-items-end w-auto">
                     <button class="btn btn-secondary shadow border-2 rounded-lg" wire:click="modifier({{$ue->id}})">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -35,9 +44,13 @@
             </td>
         </tr>
         @empty
-            <h3>
-                Aucune ue enregistree.
-            </h3>
+            <tr>
+                <td colspan="4">
+                    <h3>
+                        Aucune ue enregistree.
+                    </h3>
+                </td>
+            </tr>
         @endforelse  
     </tbody>
 </table>

@@ -4,6 +4,7 @@
             <th>Numero</th>
             <th>LIBELLE</th>
             <th>NOMBRE DE CREDIT</th>
+            <th>NOMBRE D'ETUDIANT</th>
             <th></th>
         </tr>
     </thead>
@@ -13,6 +14,11 @@
             <td>{{ $id + 1 }}</td>
             <td>{{ $ecue->libelle }}</td>
             <td>{{ $ecue->nbreCredit }}</td>
+            <td>
+                <a href="{{Route('noters', $ecue->id)}}">
+                    {{ $ecue->ue->etudiants->count() }}
+                </a>
+            </td>
             <td class="d-flex justify-content-between">
                 <span class="d-flex align-items-end w-auto">
                     <button class="btn btn-secondary shadow border-2 rounded-lg" wire:click="modifier({{$ecue->id}})">
@@ -32,9 +38,13 @@
             </td>
         </tr>
         @empty
-            <h3>
-                Aucune ecue enregistree.
-            </h3>
+            <tr>
+                <td colspan="4">
+                    <h3>
+                        Aucune ecue enregistree.
+                    </h3>
+                </td>
+            </tr>
         @endforelse  
     </tbody>
 </table>

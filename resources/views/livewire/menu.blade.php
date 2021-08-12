@@ -8,6 +8,8 @@
         <a class="btn nav-item nav-link active" href="{{Route('mentions')}}">MENTIONS</a>
         <a class="btn nav-item nav-link active" href="{{Route('specialites')}}">SPECIALITES</a>
         <a class="btn nav-item nav-link active" href="{{Route('niveaux')}}">NIVEAUX</a>
+        <a class="btn nav-item nav-link active" href="{{Route('semestres')}}">SEMESTRES</a>
+        <a class="btn nav-item nav-link active" href="{{Route('etudiants')}}">ETUDIANTS</a>
       </div>
     </div>
 </nav>

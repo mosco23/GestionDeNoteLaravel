@@ -1,4 +1,4 @@
-<table class="container table-bordered table shadow border-0 rounded-lg">
+<table class="container table-bordered table table-responsive shadow border-0 rounded-lg">
     <thead class="thead table-dark text-center">
         <tr>
             <th>Numero</th>
@@ -8,6 +8,7 @@
             <th>SPECIALITES</th>
             <th>NIVEAUX</th>
             <th>SEMESTRE</th>
+            <th>Nombre d'UE</th>
             <th></th>
         </tr>
     </thead>
@@ -28,6 +29,11 @@
             </td>
             <td>
                 {!! $parcour->semestre->libelle !!}
+            </td>
+            <td>
+                <a href="{{Route('ues', $parcour->id)}}">
+                    {{$parcour->ues->count()}}
+                </a>
             </td>
             <td class="d-flex justify-content-between">
                 <span>

@@ -9,6 +9,7 @@ use Livewire\Component;
 
 class EcueManagerComponent extends Component
 {
+    public $ecue_id;
     public $ueSelected;
     public $libelle;
     public $nbreCredit;
@@ -17,16 +18,20 @@ class EcueManagerComponent extends Component
 
     public function mount()
     {
-        $this->ueSelected = Ue::all()->first();
+        $this->initialisation();
+    }
+
+    public function initialisation()
+    {
+        $this->ecues = $this->getEcues();
         $this->nbreCredit = null;
         $this->libelle = null;
-        $this->ecues = $this->getEcues();
-        $this->ues = Ue::all();
     }
 
     public function getEcues()
     {
-        return Ecue::all()->sortByDesc(['nom', 'prenoms', 'nce']);
+        $ecues = Ue::find($this->ueSelected)->ecues()->get()->sortByDesc(['libelle']);
+        return $ecues;
     }
 
     public function updatedLibelle($libelle)
@@ -41,7 +46,7 @@ class EcueManagerComponent extends Component
 
     public function updatedUeSelected($ueSelected)
     {
-        $this->ueSelected = Ue::find($ueSelected);
+        $this->ueSelected = Ue::find($ueSelected)->id;
     }
 
     public function addEcue()
@@ -49,20 +54,17 @@ class EcueManagerComponent extends Component
         try {
             Ecue::updateOrCreate(
                 [
-                    'ue_id' => $this->ueSelected->id,
+                    'id' => $this->ecue_id,
                 ],
                 [
-                    'ue_id' => $this->ueSelected->id,
+                    'ue_id' => $this->ueSelected,
                     'libelle' => $this->libelle,
                     'nbreCredit' => $this->nbreCredit,
                 ]
             );
-    
-            $this->ecues = $this->getEcues();
-    
-            $this->ueSelected = Ue::all()->first();
-            $this->nbreCredit = null;
-            $this->libelle = null;
+
+            $this->initialisation();
+
         } catch (QueryException $e) {
             
         }
@@ -76,11 +78,12 @@ class EcueManagerComponent extends Component
 
     public function modifier($ecue_id)
     {
-        $ecue = Ecue::find($ecue_id);
+        $this->ecue_id = $ecue_id;
+        $ecue = Ecue::find($this->ecue_id);
         $this->libelle = $ecue->libelle;
         $this->nom = $ecue->nom;
         $this->nbreCredit = $ecue->nbreCredit;
-        $this->ueSelected = $ecue->id;
+        $this->ueSelected = $ecue->ue()->id;
     }
 
     public function render()

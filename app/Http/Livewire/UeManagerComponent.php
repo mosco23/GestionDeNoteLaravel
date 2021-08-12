@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Parcours;
 use App\Models\Ue;
 use Livewire\Component;
 
 class UeManagerComponent extends Component
 {
+    public $parcour_id;
     public $code;
     public $libelle;
     public $ues;
@@ -26,7 +28,8 @@ class UeManagerComponent extends Component
 
     public function getUes()
     {
-        return $this->ues = Ue::all()->sortByDesc(['libelle']);
+        $ues = Parcours::find($this->parcour_id)->ues()->get()->sortByDesc(['libelle']);
+        return $ues;
     }
 
     public function updatedCode($code)
@@ -41,15 +44,16 @@ class UeManagerComponent extends Component
 
     public function addUe()
     {
-        Ue::updateOrCreate([
+        $id = Ue::updateOrCreate([
                 'code' => $this->code,
             ],
             [
                 'code' => $this->code,
                 'libelle' => $this->libelle
             ]
-        );
-
+        )->id;
+        
+        Parcours::find($this->parcour_id)->ues()->attach($id);
         $this->initialisation();
     }
 
