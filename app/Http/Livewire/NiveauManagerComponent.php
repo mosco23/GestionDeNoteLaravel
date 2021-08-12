@@ -14,6 +14,11 @@ class NiveauManagerComponent extends Component
 
     public function mount()
     {
+        $this->initialisation();
+    }
+
+    public function initialisation()
+    {
         $this->code = null;
         $this->libelle = null;
         $this->niveaux = $this->getNiveaux();
@@ -51,14 +56,14 @@ class NiveauManagerComponent extends Component
     public function effacer($niveau_id)
     {
         Niveau::destroy(intval($niveau_id));
-        $this->niveaux = $this->getSpecialites();
+        $this->niveaux = $this->getNiveaux();
     }
 
     public function modifier($niveau_id)
     {
-        $specialite = Niveau::find($niveau_id);
-        $this->code = $specialite->code;
-        $this->libelle = $specialite->libelle;
+        $niveau = Niveau::find($niveau_id);
+        $this->code = $niveau->code;
+        $this->libelle = $niveau->libelle;
     }
 
 

@@ -4,9 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\Etudiant;
 use Livewire\Component;
+use App\Models\Ue;
 
 class EtudiantManagerComponent extends Component
 {
+    public $ueSelected;
+    public $etudiant_id;
     public $nce;
     public $nom;
     public $prenoms;
@@ -14,15 +17,21 @@ class EtudiantManagerComponent extends Component
 
     public function mount()
     {
+        $this->initialisation();
+    }
+
+    public function initialisation()
+    {
         $this->nce = null;
         $this->nom = null;
         $this->prenoms = null;
+        $this->etudiant_id = null;
         $this->etudiants = $this->getEtudiants();
     }
 
     public function getEtudiants()
     {
-        return $this->etudiants = Etudiant::all()->sortByDesc(['nom', 'prenoms', 'nce']);
+        return Ue::find($this->ueSelected)->etudiants->sortByDesc(['nom', 'prenoms', 'nce']);
     }
 
     public function updatedNce($nce)
@@ -42,18 +51,19 @@ class EtudiantManagerComponent extends Component
 
     public function addEtudiant()
     {
-        Etudiant::updateOrCreate(
+        $id = Etudiant::updateOrCreate(
             [
-                'nce' => $this->nce,
+                'id' => $this->etudiant_id,
             ],
             [
                 'nce' => $this->nce,
                 'nom' => $this->nom,
                 'prenom' => $this->prenoms,
             ]
-    );
+        )->id;
 
-        $this->getEtudiants();
+        Ue::find($this->ueSelected)->etudiants()->attach($id);
+        $this->initialisation();
     }
 
     public function effacer($etudiant_id)
@@ -64,6 +74,7 @@ class EtudiantManagerComponent extends Component
 
     public function modifier($etudiant_id)
     {
+        $this->etudiant_id = $etudiant_id;
         $etudiant = Etudiant::find($etudiant_id);
         $this->nce = $etudiant->nce;
         $this->nom = $etudiant->nom;

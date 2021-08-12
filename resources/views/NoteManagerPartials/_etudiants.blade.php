@@ -34,9 +34,13 @@
             </td>
         </tr>
         @empty
-            <h3>
-                Aucun etudiant enregistre.
-            </h3>
+            <tr>
+                <td colspan="5">
+                    <h3>
+                        Aucun etudiant enregistre.
+                    </h3>
+                </td>
+            </tr>
         @endforelse  
     </tbody>
 </table>

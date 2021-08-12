@@ -103,11 +103,6 @@ class DatabaseSeeder extends Seeder
 
             foreach ($ue['parcours'] as $pk => $parcours_id) {
                 Ue::find($ue_id)->parcours()->attach($parcours_id);
-
-                // DB::table('parcours_ue')->insert([
-                //     'ue_id' => $ue_id,
-                //     'parcours_id' => intVal($parcours_id),
-                // ]);
             }
         endforeach;
 

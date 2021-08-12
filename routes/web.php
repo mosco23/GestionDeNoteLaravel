@@ -27,6 +27,23 @@ Route::get('/mentions', function(){
     return view('pages.mentions');
 })->name('mentions');
 
+Route::get('/ues/{id}', function($id){
+    return view('pages.ues', ["id" => $id]);
+})->name('ues');
+
+Route::get('/noters/{id}', function($id){
+    return view('pages.noters', ["id" => $id]);
+})->name('noters');
+
+
+Route::get('/etudiants/{id}', function($id){
+    return view('pages.etudiants', ["id" => $id]);
+})->name('etudiants');
+
+
+Route::get('/ecues/{id}', function($id){
+    return view('pages.ecues', ["id" => $id]);
+})->name('ecues');
 
 Route::get('/specialites', function(){
     return view('pages.specialites');
@@ -42,3 +59,7 @@ Route::get('/parcours/{id}', function($id){
 Route::get('/niveaux', function(){
     return view('pages.niveaux');
 })->name('niveaux');
+
+Route::get('/semestres', function(){
+    return view('pages.semestres');
+})->name('semestres');

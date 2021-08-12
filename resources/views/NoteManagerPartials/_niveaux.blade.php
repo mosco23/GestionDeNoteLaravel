@@ -33,9 +33,13 @@
             </td>
         </tr>
         @empty
-            <h3>
-                Aucune annee enregistree.
-            </h3>
+        <tr>
+            <td colspan="3">
+                <h3>
+                    Aucune annee enregistree.
+                </h3>
+            </td>
+        </tr>
         @endforelse  
     </tbody>
 </table>
